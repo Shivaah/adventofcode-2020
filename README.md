@@ -9,3 +9,8 @@ I'm new in Scala language then i take advantage of this event to use my new know
 I use a lot of object and imperative programming languages in my daily life as a developer, functional programming is something new for me. 
 
 The goal for me during this event is not just to find the solution and display it or to try to optimize it to fit on one line. I will try to set up a structure that respects good programming practices and at the same time write things as functional as possible.
+
+## Solutions
+
+[Day1](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day1/ReportRepair.scala)  
+[Day2](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day2/PasswordPhilosophy.scala)
