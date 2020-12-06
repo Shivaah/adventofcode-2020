@@ -26,11 +26,17 @@ object ReportRepair {
     result._1 * result._2
   }
 
+  def getPart2(content : Seq[Int]) : Int = {
+    val result = content.combinations(3).filter(x => x.sum == 2020).toSeq
+    result.head.product
+  }
+
   def main(args: Array[String]): Unit = {
     val bufferedResource = Source.fromResource("day1.txt")
     val input = bufferedResource.getLines().map(_.toInt).toSeq
     bufferedResource.close()
 
     println(getPart1(input))
+    println(getPart2(input))
   }
 }
