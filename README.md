@@ -13,5 +13,5 @@ The goal for me during this event is not just to find the solution and display i
 ## Solutions
 
 [Day1](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day1/ReportRepair.scala)  
-[Day2](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day2/PasswordPhilosophy.scala)
+[Day2](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day2/PasswordPhilosophy.scala)  
 [Day3](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day3/TobogganTrajectory.scala)
