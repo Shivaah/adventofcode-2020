@@ -78,7 +78,7 @@ object PasswordPhilosophy {
     val bufferedResource = Source.fromResource("day2.txt")
     val input = bufferedResource.getLines().toSeq
     bufferedResource.close()
-
+0
     println(getPart1(input))
     println(getPart2(input))
   }
