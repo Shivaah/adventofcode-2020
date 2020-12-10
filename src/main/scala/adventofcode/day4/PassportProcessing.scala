@@ -19,7 +19,7 @@ object PassportProcessing {
     passport.byr.exists(byr => byr >= 1920 && byr <= 2002)
 
   def validateIssueYear(passport: Passport): Boolean =
-    passport.iyr.exists(iyr => iyr >= 210 && iyr <= 2020)
+    passport.iyr.exists(iyr => iyr >= 2010 && iyr <= 2020)
 
   def validateExpirationYear(passport: Passport): Boolean =
     passport.eyr.exists(eyr => eyr >= 2020 && eyr <= 2030)
@@ -29,7 +29,7 @@ object PassportProcessing {
       val require = "cm" :: "in" :: Nil
       val measureRequire = Map("cm" -> (150, 193), "in" -> (59, 76))
 
-      require.filter(x => passport.hgt.contains(x)) match {
+      require.filter(x => hgt.contains(x)) match {
         case Nil => false
         case List(x) =>
           val height = hgt.split(x).head.toInt
@@ -43,10 +43,10 @@ object PassportProcessing {
   def validateHairColor(passport : Passport) : Boolean =
     passport.hcl.filter(hcl => hcl.length == 7)
       .filter(hcl => hcl.head == '#')
-      .map(hcl => hcl.drop(0))
-      .exists(hcl => hcl.forall(x => x.isDigit))
+      .map(hcl => hcl.drop(1))
+      .exists(hcl => hcl.forall(x => x.isLetterOrDigit))
 
-  def validateEyeColor(passport: Passport) : Boolean = passport.eyr match {
+  def validateEyeColor(passport: Passport) : Boolean = passport.ecl match {
     case Some(eyr) => {
       val require = "amb" :: "blu" :: "brn" :: "gry" :: "grn" :: "hzl" :: "oth" :: Nil
       require.contains(eyr)
@@ -81,16 +81,26 @@ object PassportProcessing {
     )
   }
 
-  def getPart1(info: List[PassportContent]): Int = 0 // TODO
+  def getPart1(contents: List[PassportContent]): Int =
+    contents.count(x => passportContainsRequireFields(x))
 
-  def getPart2(info: List[PassportContent]): Int = 0 // TODO
+  def getPart2(contents: List[PassportContent]): Int = {
+    val passports = contents.map(x => getPassportFromContent(x))
+
+    passports.filter(x => validateBirthYear(x))
+      .filter(x => validateExpirationYear(x))
+      .filter(x => validateIssueYear(x))
+      .filter(x => validateEyeColor(x))
+      .filter(x => validateHairColor(x))
+      .filter(x => validateHeight(x))
+      .count(x => validatePassportID(x))
+  }
 
   def main(args: Array[String]): Unit = {
 
     val bufferedResource = Source.fromResource("day4.txt")
     val input = bufferedResource.getLines().toList
     bufferedResource.close()
-
 
     val contents = input.map(x => if (x == "") "\n" else x)
       .reduce((a,b) => a + " " + b)
