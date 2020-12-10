@@ -48,8 +48,8 @@ object PassportProcessing {
 
   def validateEyeColor(passport: Passport) : Boolean = passport.ecl match {
     case Some(eyr) => {
-      val require = "amb" :: "blu" :: "brn" :: "gry" :: "grn" :: "hzl" :: "oth" :: Nil
-      require.contains(eyr)
+      val required = "amb" :: "blu" :: "brn" :: "gry" :: "grn" :: "hzl" :: "oth" :: Nil
+      required.contains(eyr)
     }
 
     case None => false
@@ -60,9 +60,9 @@ object PassportProcessing {
 
   def passportContainsRequireFields(passport : List[(String, String)]): Boolean = {
     val requiredFields = "byr" :: "iyr" :: "eyr" :: "hgt" :: "hcl" :: "ecl" :: "pid" :: Nil
-    val fieldsInPassword = passport.map(x => x._1)
+    val fieldsInPassport = passport.map(x => x._1)
 
-    requiredFields.intersect(fieldsInPassword).length >= requiredFields.length
+    requiredFields.intersect(fieldsInPassport).length >= requiredFields.length
   }
 
   def getPassportFromContent(passportInfo: PassportContent) : Passport = {
