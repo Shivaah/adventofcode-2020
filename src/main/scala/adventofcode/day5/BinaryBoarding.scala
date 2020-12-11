@@ -32,13 +32,17 @@ object BinaryBoarding {
     }
   }
 
-  def row(range : Range, displacement: List[Char]): Option[Int] = find('B', 'F')(range, displacement)
-  def column(range : Range, displacement: List[Char]): Option[Int] = find('R', 'L')(range, displacement)
+  def row(range: Range, displacement: List[Char]): Option[Int] = find('B', 'F')(range, displacement)
+  def column(range: Range, displacement: List[Char]): Option[Int] = find('R', 'L')(range, displacement)
 
-  def getPart1(input : Seq[String]): Int =
+  def getPart1(input : Seq[String]): Int = {
+    val rows = 0 to 127
+    val columns = 0 to 7
+
     input.map(x => (x.slice(0, 7).toList, x.slice(7, input.head.length).toList))
-      .map(x => row(0 to 127, x._1).getOrElse(0) * 8 + column(0 to 7, x._2).getOrElse(0))
+      .map(x => row(rows, x._1).getOrElse(0) * 8 + column(columns, x._2).getOrElse(0))
       .max
+  }
 
   def main(args: Array[String]): Unit = {
     val bufferedResource = Source.fromResource("day5.txt")
