@@ -16,4 +16,5 @@ The goal for me during this event is not just to find the solution and display i
 [Day2](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day2/PasswordPhilosophy.scala) - Both   
 [Day3](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day3/TobogganTrajectory.scala) - Both   
 [Day4](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day4/PassportProcessing.scala) - Both   
-[Day5](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day5/BinaryBoarding.scala) - Part 1
+[Day5](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day5/BinaryBoarding.scala) - Part 1  
+[Day6](https://github.com/Shivaah/adventofcode-2020/blob/master/src/main/scala/adventofcode/day6/CustomCustoms.scala) - Part 1
